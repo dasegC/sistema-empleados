@@ -10,7 +10,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = '15211730'
 app.config['MYSQL_DATABASE_DB'] = 'empleados'
-#
+#Se crea configuracion para carpeta de archivos de fotos
 app.config['TMP_DIR'] = './src/uploads'
 
 mysql.init_app(app)
@@ -52,9 +52,9 @@ def method_name():
 
     if _foto.filename != '':
         nuevoNombreFoto = tiempo + '-' + _foto.filename
-        tmp_folder= app.config['TMP_DIR'] 
-        file_path = os.path.join(tmp_folder, nuevoNombreFoto)
-        _foto.save(file_path)
+        tmp_folder= app.config['TMP_DIR'] #Se crea carpeta temporal
+        file_path = os.path.join(tmp_folder, nuevoNombreFoto) #Se crea el path 
+        _foto.save(file_path) #Se guarda el archivo en directorio especificado
         #_foto.save('./uploads' + nuevoNombreFoto)
 
     sql = "INSERT INTO empleados (nombre, correo, foto) values (%s, %s,%s);"
